@@ -123,9 +123,9 @@ WildRydes.map = WildRydes.map || {};
 		.then(response => {
 			let arr = []
 			arr = Object.values(response)
-			displayUpdate(arr[0][0].name + '| Rating: ' + Math.round(arr[0][0].weighted_rating_value*10)/10)
-			displayUpdate(arr[0][1].name + '| Rating: ' + Math.round(arr[0][1].weighted_rating_value*10)/10)
-			displayUpdate(arr[0][2].name + '| Rating: ' + Math.round(arr[0][2].weighted_rating_value*10)/10)
+			displayUpdate(arr[0][0].name + ' | Rating: ' + Math.round(arr[0][0].weighted_rating_value*10)/10)
+			displayUpdate(arr[0][1].name + ' | Rating: ' + Math.round(arr[0][1].weighted_rating_value*10)/10)
+			displayUpdate(arr[0][2].name + ' | Rating: ' + Math.round(arr[0][2].weighted_rating_value*10)/10)
 		})
 		.catch(err => console.error(err));
 		
