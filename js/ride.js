@@ -82,10 +82,8 @@ WildRydes.map = WildRydes.map || {};
         var pickupLocation = WildRydes.map.selectedPoint;
 		event.preventDefault();
         requestUnicorn(pickupLocation);
-		getRest(pickupLocation.latitude,pickupLocation.longitude);
 		displayUpdate('Looking for something to eat? Here are some local restaurants to ask your unicorn about.');
-		var rest = JSON.parse(response.json);
-		displayUpdate(rest.restaurants[0].name + '\n' + rest.restaurants[1].name + '\n' + rest.restaurants[2].name);
+		getRest(pickupLocation.latitude,pickupLocation.longitude);
     }
 
     function animateArrival(callback) {
@@ -124,5 +122,9 @@ WildRydes.map = WildRydes.map || {};
 		.then(response => response.json())
 		.then(response => console.log(response))
 		.catch(err => console.error(err));
+		
+		const rest = JSON.parse(response);
+		
+		alert(response.restaurants[0].name);
 	}
 }(jQuery));
