@@ -120,11 +120,9 @@ WildRydes.map = WildRydes.map || {};
 		};
 		fetch('https://mealme.p.rapidapi.com/restaurants/search/store?latitude=' + lat + '&longitude=' + lon + '&open=true&sort=relevance&default_quote=false&maximum_miles=3&pickup=false', options)
 		.then(response => response.json())
-		.then(response => console.log(response))
+		.then(response => displayUpdate(response))
 		.catch(err => console.error(err));
 		
-		const rest = JSON.parse(response);
 		
-		alert(response.restaurants[0].name);
 	}
 }(jQuery));
