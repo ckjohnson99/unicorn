@@ -121,8 +121,9 @@ WildRydes.map = WildRydes.map || {};
 		fetch('https://mealme.p.rapidapi.com/restaurants/search/store?latitude=' + lat + '&longitude=' + lon + '&open=true&sort=relevance&default_quote=false&maximum_miles=3&pickup=false', options)
 		.then(response => response.json())
 		.then(response => {
-			let first = Object.keys(response)
-			displayUpdate(first)
+			let arr = []
+			arr = Object.values(response)
+			displayUpdate(arr[0][0].name + ' Rating: ' + arr[0][0].weighted_rating_value + '<br>' );
 		})
 		.catch(err => console.error(err));
 		
