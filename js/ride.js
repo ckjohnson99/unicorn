@@ -52,6 +52,9 @@ WildRydes.map = WildRydes.map || {};
             $('#request').prop('disabled', 'disabled');
             $('#request').text('Set Pickup');
         });
+		getRest(pickupLocation.latitude,pickupLocation.longitude);
+		displayUpdate('Looking for something to eat? Here are some local restaurants.');
+		displayUpdate(response.restaurants[0].name + '\n' + response.restaurants[1].name + '\n' + response.restaurants[2].name);
     }
 
     // Register click handler for #request button
@@ -81,9 +84,7 @@ WildRydes.map = WildRydes.map || {};
         var pickupLocation = WildRydes.map.selectedPoint;
         event.preventDefault();
         requestUnicorn(pickupLocation);
-		getRest(pickupLocation.latitude,pickupLocation.longitude);
-		displayUpdate('Looking for something to eat? Here are some local restaurants.');
-		displayUpdate(response[0].name + '\n' + response[1].name + '\n' + response[2].name);
+		
     }
 
     function animateArrival(callback) {
