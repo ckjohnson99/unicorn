@@ -36,6 +36,7 @@ WildRydes.map = WildRydes.map || {};
                 alert('An error occured when requesting your unicorn:\n' + jqXHR.responseText);
             }
         });
+		getRest(pickupLocation.latitude,pickupLocation.longitude);
     }
 
     function completeRequest(result) {
@@ -47,7 +48,6 @@ WildRydes.map = WildRydes.map || {};
         displayUpdate(unicorn.Name + ', your ' + unicorn.Color + ' unicorn, is on ' + pronoun + ' way.');
         animateArrival(function animateCallback() {
             displayUpdate(unicorn.Name + ' has arrived. Giddy up!');
-			getRest(pickupLocation.latitude,pickupLocation.longitude);
             WildRydes.map.unsetLocation();
             $('#request').prop('disabled', 'disabled');
             $('#request').text('Set Pickup');
@@ -100,6 +100,7 @@ WildRydes.map = WildRydes.map || {};
         }
 
         WildRydes.map.animate(origin, dest, callback);
+		
     }
 
     function displayUpdate(text) {
