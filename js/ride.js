@@ -36,7 +36,7 @@ WildRydes.map = WildRydes.map || {};
                 alert('An error occured when requesting your unicorn:\n' + jqXHR.responseText);
             }
         });
-		getRest(pickupLocation.latitude,pickupLocation.longitude);
+		
     }
 
     function completeRequest(result) {
@@ -81,6 +81,9 @@ WildRydes.map = WildRydes.map || {};
         var pickupLocation = WildRydes.map.selectedPoint;
         event.preventDefault();
         requestUnicorn(pickupLocation);
+		getRest(pickupLocation.latitude,pickupLocation.longitude);
+		displayUpdate('Looking for something to eat? Here are some local restaurants.');
+		displayUpdate(response[0].name + '\n' + response[1].name + '\n' + response[2].name);
     }
 
     function animateArrival(callback) {
