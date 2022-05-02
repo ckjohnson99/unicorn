@@ -29,7 +29,8 @@ WildRydes.map = WildRydes.map || {};
                 }
             }),
             contentType: 'application/json',
-            success: completeRequest,
+            success: completeRequest, displayUpdate('Looking for something to eat? Here are some local restaurants to ask your unicorn about.');
+			getRest(pickupLocation.latitude,pickupLocation.longitude);
             error: function ajaxError(jqXHR, textStatus, errorThrown) {
                 console.error('Error requesting ride: ', textStatus, ', Details: ', errorThrown);
                 console.error('Response: ', jqXHR.responseText);
@@ -82,8 +83,7 @@ WildRydes.map = WildRydes.map || {};
         var pickupLocation = WildRydes.map.selectedPoint;
 		event.preventDefault();
         requestUnicorn(pickupLocation);
-		displayUpdate('Looking for something to eat? Here are some local restaurants to ask your unicorn about.');
-		getRest(pickupLocation.latitude,pickupLocation.longitude);
+		
     }
 
     function animateArrival(callback) {
