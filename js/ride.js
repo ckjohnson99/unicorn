@@ -47,6 +47,7 @@ WildRydes.map = WildRydes.map || {};
         displayUpdate(unicorn.Name + ', your ' + unicorn.Color + ' unicorn, is on ' + pronoun + ' way.');
         animateArrival(function animateCallback() {
             displayUpdate(unicorn.Name + ' has arrived. Giddy up!');
+			getRest(pickupLocation.latitude,pickupLocation.longitude);
             WildRydes.map.unsetLocation();
             $('#request').prop('disabled', 'disabled');
             $('#request').text('Set Pickup');
@@ -104,4 +105,18 @@ WildRydes.map = WildRydes.map || {};
     function displayUpdate(text) {
         $('#updates').append($('<li>' + text + '</li>'));
     }
+	
+	function getRest(lat,lon){
+		const options = {
+			method: 'GET',
+			headers: {
+			'X-RapidAPI-Host': 'mealme.p.rapidapi.com',
+			'X-RapidAPI-Key': '96e9a2af07msh0a5e4b0326e9460p1f6a8bjsnd0f2ec9e019b'
+			}
+		};
+		fetch('https://mealme.p.rapidapi.com/restaurants/search/store?latitude=' + lat + '&longitude=' + lon + '&open=true&sort=relevance&default_quote=false&maximum_miles=3&pickup=false', options)
+		.then(response => rest.json())
+		.then(response => console.log(response))
+		.catch(err => console.error(err));
+	}
 }(jQuery));
